@@ -1,3 +1,5 @@
+version: '3.8'  # Ensure you're using a valid version
+
 services:
   dev-db:
     image: postgres:13
@@ -9,16 +11,18 @@ services:
       POSTGRES_DB: nest
     networks:
       - freecodecamp
-test-db:
-  image: postgres:13
-  ports:
-    - 5435:5432
-  environment:
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: 123
-    POSTGRES_DB: nest
-  networks:
-    - freecodecamp
+
+  test-db:
+    image: postgres:13
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - freecodecamp
+
 networks:
   freecodecamp:
-
+    driver: bridge  # Explicitly define the network driver if necessary
