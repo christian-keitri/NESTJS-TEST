@@ -226,7 +226,7 @@ import { CreateBookmarkDto, EditBookmarkDto } from 'src/bookmark/dto';
       it('should delete bookmark', () => {
         return pactum
         .spec()
-        .delete('bookmarks/{id}')
+        .delete('/bookmarks/{id}')
         .withPathParams ('id', '$S{bookmarkId}')
         .withHeaders({
           Authorization: 'Bearer $S{userAt}',
