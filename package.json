@@ -10,7 +10,7 @@
     "db:dev:rm": "docker compose rm dev-db -s -f -v",
     "db:dev:up": "docker compose up dev-db -d",
     "db:dev:restart": "yarn db:dev:rm && yarn db:dev:up && sleep 1 && yarn prisma:dev:deploy",
-    "prisma:test:deploy": "dotenv -e .env.test --prisma migrate deploy",
+    "prisma:test:deploy": "dotenv -e .env.test -- prisma migrate deploy",
     "db:test:rm": "docker compose rm test-db -s -f -v",
     "db:test:up": "docker compose up test-db -d",
     "db:test:restart": "yarn db:test:rm && yarn db:test:up && sleep 1 && yarn prisma:test:deploy",
@@ -30,6 +30,7 @@
     "test:e2e": "dotenv -e .env.test -- jest --watch --no-cache --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "2": "^3.0.0",
     "@nestjs/common": "^11.0.12",
     "@nestjs/config": "^4.0.1",
     "@nestjs/core": "^11.0.12",
@@ -83,7 +84,7 @@
     "silkrouter": "3.4.6",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
-    "ts-jest": "^29.3.0",
+    "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
