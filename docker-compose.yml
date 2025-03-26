@@ -1,4 +1,4 @@
-version: '3.8'  # Ensure you're using a valid version
+version: '3.8' 
 
 services:
   dev-db:

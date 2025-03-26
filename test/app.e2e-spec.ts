@@ -16,7 +16,7 @@ describe('App e2e', () => {
       imports: [AppModule],
     }).compile();
 
-    app = moduleRef.createNestApplication();
+     app = moduleRef.createNestApplication();
     app.useGlobalPipes(
       new ValidationPipe({
         whitelist: true,
@@ -30,8 +30,8 @@ describe('App e2e', () => {
     pactum.request.setBaseUrl('http://localhost:3333');
   });
 
-  afterAll(async () => {
-    await app.close(); // Ensure app is properly closed after tests
+  afterAll(() => {
+     app.close(); 
   });
 
   describe('Auth', () => { 
@@ -110,7 +110,8 @@ describe('App e2e', () => {
           .spec()
           .post('/auth/signin')
           .withBody(dto) 
-          .expectStatus(200)
+          .expectStatus(201)
+          .inspect()
           .stores('userAt', 'access_token');
       });
     }); 
@@ -165,7 +166,7 @@ describe('App e2e', () => {
       describe('Create bookmark', () => {
         const dto: CreateBookmarkDto = {
           title: "First Bookmark",
-          link: 'https://www.youtube.com/watch?v=d6WC5n9G_sM',
+          link: 'https://example.com',
         };
         it('should create bookmark', () => {
           return pactum
@@ -198,12 +199,12 @@ describe('App e2e', () => {
           return pactum
             .spec()
             .get('/bookmarks/{id}')
-            .withPathParams('id', '$S{bookmarkId}')  // Corrected to use $S{bookmarkId}
+            .withPathParams('id', '$S{bookmarkId}') 
             .withHeaders({
               Authorization: 'Bearer $S{userAt}',
             })
             .expectStatus(200)
-            .expectBodyContains('$S{bookmarkId}');  // Corrected to use $S{bookmarkId}
+            .expectBodyContains('$S{bookmarkId}');  
         });
       });
 
