@@ -6,7 +6,7 @@ import { BookmarkService } from './bookmark.service';
 @Module({
   controllers: [BookmarkController],
   providers: [BookmarkService]
-})
+})w
 export class BookmarkModule {}
 =======
 import { Module } from '@nestjs/common';
