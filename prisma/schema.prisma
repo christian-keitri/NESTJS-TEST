@@ -12,14 +12,27 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 
+<<<<<<< HEAD
   email     String    @unique
   firstname String? 
   lastname  String?
   hash      String
 
   bookmarks Bookmark[] // One-to-many relationship with Bookmark
+=======
+  email String @unique
+  hash String
+
+  firstname String? //optional string pag may ?
+  lastname String?
+  
+  bookmarks Bookmark[]
+
+  @@map("users")
+>>>>>>> 6bcfb262e57f216b58b1251b43670ff842f23284
 }
 
+<<<<<<< HEAD
 model Bookmark {
   id          Int       @id @default(autoincrement())
   createdAt   DateTime  @default(now())
@@ -32,3 +45,14 @@ model Bookmark {
   user        User      @relation(fields: [userId], references: [id]) // Relationship with User
 }
 
+=======
+  title String
+  description String?
+  link  String
+
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("bookmarks")
+}
+>>>>>>> 6bcfb262e57f216b58b1251b43670ff842f23284
