@@ -1,36 +1,34 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"  
-  url      = env("DATABASE_URL")
-}
-//this is where we declare our model
-
 model User {
-  id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 
-  email String
-  hash String
+  email     String    @unique
+  firstname String? 
+  lastname  String?
+  hash      String
 
-  firstname String? //optional string pag may ?
-  lastname String?
+  bookmarks Bookmark[] // One-to-many relationship with Bookmark
 }
+
 model Bookmark {
-  id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
-  tittle String
+  title       String    // Corrected field name
   description String?
-  link  String
+  link        String
+  userId      Int       // Foreign key to User
+  user        User      @relation(fields: [userId], references: [id]) // Relationship with User
 }
+
