@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaClient } from '@prisma/client';
@@ -19,35 +18,8 @@ export class PrismaService extends PrismaClient {
   async cleanDb() {
     console.log('Cleaning database...');
     return this.$transaction([
-      this.bookmark.deleteMany(),
-      this.user.deleteMany(),
+       this.bookmark.deleteMany(),
+       this.user.deleteMany(),
     ]);
   }
 }
-=======
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { PrismaClient } from '@prisma/client';
-
-@Injectable()
-export class PrismaService extends PrismaClient {
-  constructor(config: ConfigService) {
-    super({
-      datasources: {
-        db: {
-          url: config.get('DATABASE_URL'),
-        },
-      },
-      log: ['query', 'info', 'warn', 'error'],  // Enable logging for query, info, warn, and error
-    });
-  }
-
-  async cleanDb() {
-    console.log('Cleaning database...');
-    return this.$transaction([
-      this.bookmark.deleteMany(),
-      this.user.deleteMany(),
-    ]);
-  }
-}
->>>>>>> 6bcfb262e57f216b58b1251b43670ff842f23284

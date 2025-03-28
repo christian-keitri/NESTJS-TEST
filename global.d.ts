@@ -1,0 +1,16 @@
+declare module 'swc/wasm';
+declare module '@swc/cli';
+declare module '@swc/core';
+declare module '@swc/helpers';
+declare module 'argon-logger';
+declare module 'babel-jest';
+declare module 'class-transformer';
+declare module 'class-validator';
+declare module 'typescript';
+declare module 'webpack-bundle-analyzer';
+declare module 'utf-8-validate';
+declare module 'bufferutil';
+declare module 'jest-resolve';
+declare module 'eslint-community/eslint-utils';
+declare module 'follow-redirects';
+declare module 'supports-color';

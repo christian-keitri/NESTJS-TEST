@@ -110,8 +110,7 @@ describe('App e2e', () => {
           .spec()
           .post('/auth/signin')
           .withBody(dto) 
-          .expectStatus(201)
-          .inspect()
+          .expectStatus(200) //200
           .stores('userAt', 'access_token');
       });
     }); 
@@ -143,7 +142,7 @@ describe('App e2e', () => {
             Authorization: 'Bearer $S{userAt}',
           })
           .withBody(dto)
-          .expectStatus(200)
+          .expectStatus(200)  //200
           .expectBodyContains(dto.firstName)
           .expectBodyContains(dto.email);
       });

@@ -1,4 +1,4 @@
-version: '3.8' 
+version: "3.8"
 
 services:
   dev-db:
@@ -25,4 +25,4 @@ services:
 
 networks:
   freecodecamp:
-    driver: bridge  # Explicitly define the network driver if necessary
+
