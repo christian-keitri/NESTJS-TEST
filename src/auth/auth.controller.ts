@@ -9,17 +9,17 @@ import {
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
 
-@Controller('auth')
+@Controller('auth') //global prefix route
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('signup')
+  @Post('signup') //end point
   signup(@Body() dto: AuthDto) {
     return this.authService.signup(dto);
   }
 
   @HttpCode(HttpStatus.OK)
-  @Post('signin')
+  @Post('signin') // end point
   signin(@Body() dto: AuthDto) {
     return this.authService.signin(dto);
   }
