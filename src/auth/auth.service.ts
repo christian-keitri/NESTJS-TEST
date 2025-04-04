@@ -31,7 +31,7 @@ export class AuthService {
 
       return this.signToken(user.id, user.email);
     } catch (error) {
-      // Check if error is a known Prisma error (with code P2002 - unique constraint violation)
+     
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
           throw new ForbiddenException('Credentials taken');

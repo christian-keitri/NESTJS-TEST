@@ -14,10 +14,7 @@ import {
 import { GetUser } from '../auth/decorator';
 import { JwtGuard } from '../auth/guard';
 import { BookmarkService } from './bookmark.service';
-import {
-  CreateBookmarkDto,
-  EditBookmarkDto,
-} from './dto';
+import { CreateBookmarkDto,EditBookmarkDto,} from './dto';
 
 @UseGuards(JwtGuard)
 @Controller('bookmarks')
